@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 
 # Load YOLO model
-model = YOLO("firstModel.pt")
+model = YOLO("fifthModel.pt")
 
 # Define the prediction function with error handling
 def detect_species(files):
@@ -20,7 +20,7 @@ def detect_species(files):
         for file in files:  # Loop through the list of uploaded files
             try:
                 # Process each file
-                image = Image.open(file)
+                image = Image.open(file).convert("RGB")
                 image = np.array(image)
                 results = model(image)
                 annotated_image = results[0].plot()
